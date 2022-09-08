@@ -47,66 +47,29 @@ function Main(props) {
                 <Route path={`/contact`} element={<Contact />} />
                 <Route path={`/login`} element={isLogged ? <Pnf /> : <Login />} />
                 <Route path={`/register`} element={isLogged ? <Pnf /> : <Register />} />
-                <Route path={`/user/dashboard`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <UserDashboard />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/admin/dashboard`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <AdminDashboard />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/admin/allOrders`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <OrderList />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/admin/products`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <ProductList />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/admin/allUsers`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <AllUsers />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/profile`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <Profile />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/orders`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <Order />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/product/details/:id`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <ProductDetails />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/product/create`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <CreateProduct />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/product/update/:id`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <UpdateProduct />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/product/cart`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <Cart />
-                    </ProtectedRoute>
-                } />
-                <Route path={`/checkout`} element={
-                    <ProtectedRoute auth={isLogged} >
-                        <Checkout />
-                    </ProtectedRoute>
-                } />
+
+                {
+                    isAdmin ? (
+                        <Route element={<ProtectedRoute />}>
+                            <Route path={`/admin/dashboard`} element={<AdminDashboard />} />
+                            <Route path={`/profile`} element={<Profile />} />
+                            <Route path={`/admin/allUsers`} element={<AllUsers />} />
+                            <Route path={`/admin/allOrders`} element={<OrderList />} />
+                            <Route path={`/admin/products`} element={<ProductList />} />
+                            <Route path={`/product/create`} element={<CreateProduct />} />
+                            <Route path={`/product/update/:id`} element={<UpdateProduct />} />
+                            <Route path={`/product/details/:id`} element={<ProductDetails />} />
+                        </Route>) : (
+                        <Route element={<ProtectedRoute />}>
+                            <Route path={`/user/dashboard`} element={<UserDashboard />} />
+                            <Route path={`/profile`} element={<Profile />} />
+                            <Route path={`/orders`} element={<Order />} />
+                            <Route path={`/product/details/:id`} element={<ProductDetails />} />
+                            <Route path={`/product/cart`} element={<Cart />} />
+                            <Route path={`/checkout`} element={<Checkout />} />
+                        </Route>
+                    )
+                }
                 <Route path={`/*`} element={<Pnf />} />
             </Routes>
         </Router>
