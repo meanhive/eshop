@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
-import { setAuthToken } from '../../helper/setAuthToken'
+import { setAuthToken } from '../../helpers/setAuthToken'
 
 function Login() {
   const [user, setUser] = useState({
