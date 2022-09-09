@@ -15,7 +15,7 @@ function DataProvider(props) {
 
 
   useEffect(() => {
-    if (localStorage.getItem('loginStatus')) {
+    if (localStorage.getItem('loginToken')) {
       const getToken = async () => {
         await axios.get(`/api/v1/auth/refreshToken`)
           .then(res => {

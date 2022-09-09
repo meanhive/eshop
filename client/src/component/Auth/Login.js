@@ -24,7 +24,6 @@ function Login() {
         let token = res.data.token;
         localStorage.setItem('loginToken', token);
         setAuthToken(token)
-        navigate("/")
         window.location.href = "/";
       }).catch(err => toast.error(err.response.data.msg));
 
