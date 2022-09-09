@@ -32,12 +32,6 @@ function SideMenu() {
                         </NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="#">
-                            <span data-feather="bar-chart-2" className="align-text-bottom"></span>
-                            Reports
-                        </NavLink>
-                    </li>
-                    <li className="nav-item">
                         <NavLink className="nav-link" to="/profile">
                             <span data-feather="layers" className="align-text-bottom"></span>
                             Profile
